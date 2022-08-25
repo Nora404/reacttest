@@ -1,5 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Foo from "./components/Foo";
+import Clock from "./components/Clock";
+import Table from "./components/Table";
+import Wizard from "./components/Wizard";
+
+function Welcome(probs) {
+  return (
+    <h1>
+      Hallo {probs.name}, {probs.nachname}
+    </h1>
+  );
+}
+const element = <Welcome name="Ina" nachname="Ludwig" />;
 
 function App() {
   return (
@@ -7,16 +20,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hallo <code>du da</code> Es dreht sich!
+          {element}
+          <Wizard />
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
