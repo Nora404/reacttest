@@ -8,6 +8,9 @@ class Wizard extends React.Component {
     super(props);
     this.state = {
       currentStep: 1,
+      typ: "Number",
+      value: "0",
+      name: "Zahl",
     };
 
     this.nextStep = this.nextStep.bind(this);
@@ -28,15 +31,32 @@ class Wizard extends React.Component {
     this.setState({ currentStep: currentStep });
   }
 
+  changeData(key, data) {
+    this.setState({ [key]: data });
+  }
+
   render() {
     return (
-      <div>
-        <Step1 currentStep={this.state.currentStep} />
-        <Step2 currentStep={this.state.currentStep} />
-        <Step3 currentStep={this.state.currentStep} />
+      <div class="box">
+        <div>
+          <Step1 state={this.state} setup={this.changeData.bind(this)} />
+          <Step2 state={this.state} setup={this.changeData.bind(this)} />
+          <Step3 state={this.state} setup={this.changeData.bind(this)} />
+        </div>
 
-        <button onClick={this.prevStep}>Prev</button>
-        <button onClick={this.nextStep}>Next</button>
+        <div class="normal">
+          Typ: {this.state.typ}
+          <br />
+          Wert: {this.state.value}
+          <br />
+          Name: {this.state.name}
+          <br />
+        </div>
+
+        <div class="flex">
+          <button onClick={this.prevStep}>Prev</button>
+          <button onClick={this.nextStep}>Next</button>
+        </div>
       </div>
     );
   }
